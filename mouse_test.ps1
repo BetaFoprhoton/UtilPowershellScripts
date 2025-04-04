@@ -1,3 +1,6 @@
+#é¼ æ ‡ç‚¹å‡»æºç æ¥è‡ªï¼šhttps://www.cnblogs.com/leizia/p/18349975
+#å¯ä»¥å°†é¼ æ ‡ç‚¹å‡»è¿™ç§åŠŸèƒ½å†™æˆlib
+
 Add-Type -TypeDefinition @"
 using System;
 using System.Runtime.InteropServices;
@@ -25,13 +28,13 @@ function Click-AtPosition($x, $y) {
     [Mouse]::mouse_event([Mouse]::MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
 }
  
-# ¶¨Òåµã»÷Î»ÖÃºÍ¼ä¸ôÊ±¼äµÄÊı×é
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ÃºÍ¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 $clickPositions = @(
     @{ x = 1030; y = 1040; interval = 5 },
     @{ x = 960; y = 690; interval = 5 }
 )
  
-# ¶¨Òå×Üµã»÷´ÎÊı¿ÉÒÔ×Ô¶¨ÒåÉèÖÃ
+# ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 Start-Sleep -Seconds 10
 $totalClicks = 1
