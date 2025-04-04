@@ -55,3 +55,4 @@ for ($i = 0; $i -lt $totalClicks; $i++) {
 [Console]::Beep(1046, 300)
 [Console]::Beep(1318, 300)
 [Console]::Beep(1568, 300)
+exit

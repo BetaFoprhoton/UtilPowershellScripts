@@ -1,4 +1,4 @@
-Add-Type -TypeDefinition @"
+﻿Add-Type -TypeDefinition @"
 using System;
 using System.Runtime.InteropServices;
  
@@ -70,3 +70,4 @@ $shell.SendKeys("{ENTER}")
 [Console]::Beep(659, 400)
 [Console]::Beep(784, 400)
 [Console]::Beep(1046, 400)
+exit

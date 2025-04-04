@@ -3,7 +3,7 @@
         $stringToShow
     )
     "清洁：" + $stringToShow
-    $fullText = ("今天做清洁的是：" + $stringToShow + " ,请留下来做清洁。")
+    $fullText = ("今天做清洁的是：" + $stringToShow + " ,请记得留下来做清洁。")
 
     Add-Type -assembly System.Windows.Forms
     $mainForm = New-Object System.Windows.Forms.Form
@@ -17,13 +17,14 @@
     $label.AutoSize = $true
     $label.Location = New-Object System.Drawing.Point(0,10)
     $mainForm.Controls.Add($Label)
-    [Console]::Beep(1100,400)
-    [Console]::Beep(900,400)
+    #[Console]::Beep(1100,400)
+    #[Console]::Beep(900,400)
 
     Add-Type -AssemblyName System.speech
     $syn = New-Object System.Speech.Synthesis.SpeechSynthesizer
-    $syn.Rate = 0
+    $syn.Rate = 1.5
     $syn.Volume = 80
+    $syn.
     $syn.Speak($fullText)
 
     $mainForm.ShowDialog()

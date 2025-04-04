@@ -1,10 +1,8 @@
 ﻿function Display-Name {
     param (
-        $nameToDisplay
+        $nameToDisplay,
+        $stringToOverride
     )
-
-    
-    $nameToDisplay
 
     Add-Type -assembly System.Windows.Forms
     $mainForm = New-Object System.Windows.Forms.Form
@@ -13,27 +11,45 @@
     $mainForm.Height = 400
 
     $Label = New-Object System.Windows.Forms.Label
-    $Label.Text = "on duty: " + $nameToDisplay
+    $Label.Text = "今天值日的是： " + $nameToDisplay + "，更换名牌后请签到"
     # Set font family name and size
-    $Label. Font = 'Microsoft Sans Serif,14'
+    $Label. Font = 'Microsoft Sans Serif,18'
     # Set element position based on pixels from left and top of form
-    $Label.Location = New-Object System.Drawing.Point(0,10)
+    $Label.Location = New-Object System.Drawing.Point(0,0)
     $Label.AutoSize = $true
 
     $button = New-Object System.Windows.Forms.Button
-    $button. Font = 'Microsoft Sans Serif,14'
-    $button.Text = "Click to confirm"
+    $button. Font = 'Microsoft Sans Serif,18'
+    $button.Text = "签到"
     $button.Location = New-Object System.Drawing.Point(0,40)
     $button.AutoSize = $true
-    $button.PerformClick()
+    $button.DialogResult = [System.Windows.Forms.DialogResult]::OK
+
+    $mainForm.AcceptButton = $button
     $mainForm.Controls.Add($Label)
     $mainForm.Controls.Add($button)
 
-    $ws = New-Object -ComObject WSript.Shell
+    #$ws = New-Object -ComObject WSript.Shell
 
 
-    $mainForm.ShowDialog()
+    $result = $mainForm.ShowDialog()
+
+    if ($result -eq [System.Windows.Forms.DialogResult]::OK) {
+        $title = 'Confirm'
+        $question = '确定？'
+        $choices = '&Yes', '&No'
+
+        $decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+        if ($decision -eq 0) {
+            Write-Host 'Your choice is Yes.'
+            Out-File name_list.txt -InputObject $logString
+        }
+        else {
+            Display-Name $nameToDisplay
+        }
+    }
 }
+
 
 $today = Get-Date -Format "yyyy/dd/MM"
 
@@ -55,6 +71,7 @@ if ((($nameList[-1]  -split " ")[$dutyRow]) -eq $today) {
 $logString = ""
 $dutyName = ""
 $selectedFlag = $false
+$hasSigned = $false
 foreach ($_ in $nameList) {
 
     if ($selectedFlag -eq $true) {
@@ -74,6 +91,7 @@ foreach ($_ in $nameList) {
                $dutyName = $name
                $logString += $_  + "`n"
                $selectedFlag = $true
+               $hasSigned = $true
            } else {
                $logString += $_  + "`n"
            }
@@ -81,7 +99,9 @@ foreach ($_ in $nameList) {
     }
 }
 
-$logString
-
-Display-Name $dutyName
-
+#$logString
+if ($hasSigned -eq $false) {
+    Display-Name $dutyName $logString
+} else {
+    "今天值日的是： " + $dutyName + "`n状态：已签到`n日期：" + $today
+}
