@@ -45,7 +45,6 @@ try {
 }
 
 for ($i = 0; $i -lt 3; $i++) {
-    #æç¤ºéŸ³ï¼Œå¯ä»¥å†™ä¸ªåº“
     [Console]::Beep(1046, 300)
     [Console]::Beep(1568, 300)
     Start-Sleep -Seconds 1
@@ -56,13 +55,13 @@ Start-Sleep -Seconds 20
 
 
 
-# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ÃºÍ¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+# ¶¨Òåµã»÷Î»ÖÃºÍ¼ä¸ôÊ±¼äµÄÊý×é
 $clickPositions = @(
     @{ x = 30; y = 1050; interval = 2 },
     @{ x = 30; y = 980; interval = 2 }
 )
  
-# ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+# ¶¨Òå×Üµã»÷´ÎÊý¿ÉÒÔ×Ô¶¨ÒåÉèÖÃ
 
 $totalClicks = 1
  

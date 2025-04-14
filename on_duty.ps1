@@ -11,7 +11,7 @@
     $mainForm.Height = 400
 
     $Label = New-Object System.Windows.Forms.Label
-    $Label.Text = "今天值日的是： " + $nameToDisplay + "，更换名牌后请签到"
+    $Label.Text = "今天值日的是： " + $nameToDisplay + "，请更换名牌后签到"
     # Set font family name and size
     $Label. Font = 'Microsoft Sans Serif,18'
     # Set element position based on pixels from left and top of form
