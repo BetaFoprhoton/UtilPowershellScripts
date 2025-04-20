@@ -1,4 +1,4 @@
 timeout 1440
 cd D:\dev
 powershell D:\dev\clean_reminder.ps1
-exit
+taskkill /im cmd.exe

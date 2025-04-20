@@ -62,7 +62,7 @@ for ($i = 0; $i -lt $totalClicks; $i++) {
 
  $shell = New-Object -ComObject wscript.shell
 
-Start-Sleep -Seconds 1
+Start-Sleep -Milliseconds 500
 Type-String "ly123456"
 $shell.SendKeys("{ENTER}")
 

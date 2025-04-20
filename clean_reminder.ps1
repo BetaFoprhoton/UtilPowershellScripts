@@ -3,7 +3,7 @@
         $stringToShow
     )
     "清洁：" + $stringToShow
-    $fullText = ("今天做清洁的是：" + $stringToShow + " ,请记得留下来做清洁。")
+    $fullText = ("今天做清洁的是：" + $stringToShow + "`n请记得留下来做清洁。")
 
     Add-Type -assembly System.Windows.Forms
     $mainForm = New-Object System.Windows.Forms.Form
@@ -15,7 +15,7 @@
     $label.Text = $fullText
     $label. Font = 'Microsoft Sans Serif,18'
     $label.AutoSize = $true
-    $label.Location = New-Object System.Drawing.Point(0,10)
+    $label.Location = New-Object System.Drawing.Point(0, 10)
     $mainForm.Controls.Add($Label)
 
     Add-Type -AssemblyName System.speech
@@ -51,19 +51,19 @@ if ($currentltDay -eq "星期一") {
 
 if ($isDoubleWeek -eq $False){ 
     Switch ($currentltDay) {
-        "星期二" { Show "第2组"}
-        "星期三" { Show "第3组"}
-        "星期四" { Show "第4组"}
-        "星期五" { Show "第5组"}
-        "星期日" { Show "第1组"}
+        "星期二" { Show "第2组, 三金西瓜霜"}
+        "星期三" { Show "第3组, 吴彦组"}
+        "星期四" { Show "第4组, A组"}
+        "星期五" { Show "第5组, 两年半"}
+        "星期日" { Show "第1组, 格斗准备组"}
     }
 } else {
     Switch ($currentltDay) {
-        "星期二" { Show "第7组"}
-        "星期三" { Show "第8组"}
-        "星期四" { Show "第9组"}
-        "星期五" { Show "第10组"}
-        "星期日" { Show "第6组"}
+        "星期二" { Show "第7组, 基因虫组"}
+        "星期三" { Show "第8组, 高考调研组"}
+        "星期四" { Show "第9组, China Town(CT)"}
+        "星期五" { Show "第10组, 睡睡冰"}
+        "星期日" { Show "第6组, 二元一次方程组"}
     }
 }
 
