@@ -36,14 +36,20 @@ $day = (Get-Content -Path .\week.txt)[0]
 $isDoubleWeek = (Get-Content -Path .\week.txt)[1]
 
 if (($currentltDay -eq "星期一") -and ($day -eq "星期日")) {
-    $isDoubleWeek = ! $isDoubleWeek
+    $isDoubleWeek = $isDoubleWeek -eq $false
+    $isDoubleWeek
     "单双周轮换"
+    if ($isDoubleWeek -eq $true) {
+        "单 -> 双"
+    } else {
+        "双 -> 单"
+    }
 }
 
 if ($isDoubleWeek) { "双周" } else { "单周" }
  
 Out-File week.txt -InputObject $currentltDay
-Add-Content week.txt -value $isDoubleWeek
+Add-Content week.txt -value $isDoubleWeek #issue here
 
 if ($currentltDay -eq "星期一") {
     Show "走读"
@@ -53,7 +59,7 @@ if ($isDoubleWeek -eq $False){
     Switch ($currentltDay) {
         "星期二" { Show "第2组, 三金西瓜霜"}
         "星期三" { Show "第3组, 吴彦组"}
-        "星期四" { Show "第4组, A组"}
+        "星期四" { Show "第4组, 光宗耀组"}
         "星期五" { Show "第5组, 两年半"}
         "星期日" { Show "第1组, 格斗准备组"}
     }
